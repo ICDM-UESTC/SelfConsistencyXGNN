@@ -1,0 +1,298 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<title>Trustworthy SI-GNNs</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <!-- <header class="site-header">
+        <div class="container">
+            <h1 class="brand">My Demo Page</h1>
+            <nav id="mainNav" class="nav">
+                <a href="index.html">Home</a>
+            </nav>
+        </div>
+    </header> -->
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Self-Consistency Improves the Trustworthiness of Self-Interpretable GNNs</h1>
+                <h3 class="paper-authors">Wenxin Tai<sup>1</sup>, Ting Zhong<sup>1</sup>, Goce Trajcevski<sup>2</sup>,
+                    Fan Zhou<sup>1</sup></h3>
+                <p class="paper-affiliations"><sup>1</sup> University of Electronic Science and Technology of China
+                    <sup>2</sup> Iowa State University
+                </p>
+            </div>
+        </section>
+
+        <section class="paper-actions">
+            <a class="btn" href="https://iclr.cc/virtual/2026/poster/10008008" target="_blank">
+                <span class="btn-icon" aria-hidden="true">
+                    <svg viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                            d="M12 1.5H5A1.5 1.5 0 0 0 3.5 3v14A1.5 1.5 0 0 0 5 18.5h10A1.5 1.5 0 0 0 16.5 17V6.5L12 1.5zM12 7V2.75L15.25 7H12z" />
+                    </svg>
+                </span>
+                <span>Paper</span>
+            </a>
+            <a class="btn" href="https://github.com/ICDM-UESTC/SelfConsistencyXGNN" target="_blank">
+                <span class="btn-icon" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                    </svg>
+                </span>
+                <span>Code</span>
+            </a>
+            <!-- <a class="btn" href="#" target="_blank">
+                <span class="btn-icon" aria-hidden="true">
+                    <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6">
+                        <rect x="3" y="5" width="16" height="11" rx="1.8" ry="1.8"></rect>
+                        <path d="M2 16h18M8 18h6"></path>
+                    </svg>
+                </span>
+                <span>Slides</span>
+            </a> -->
+            <button class="btn" type="button" id="contactBtn">
+                <span class="btn-icon" aria-hidden="true">
+                    <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6">
+                        <path d="M3 5.5h16v11H3z"></path>
+                        <path d="m3 7 8 5 8-5"></path>
+                    </svg>
+                </span>
+                <span>Contact</span>
+            </button>
+        </section>
+
+        <div class="contact-modal" id="contactModal" aria-hidden="true" role="dialog" aria-modal="true"
+            aria-label="Contact information">
+            <div class="contact-card">
+                <div class="contact-card__header">
+                    <b>Contact: <a href="https://wxtai.github.io" target="_blank" rel="noopener noreferrer">
+                            Wenxin Tai</a></b>
+                    <button class="contact-close" type="button" aria-label="Close">×</button>
+                </div>
+                <p class="contact-email">Email: <a href="mailto:wxtai@outlook.com">wxtai@outlook.com</a></p>
+            </div>
+        </div>
+
+        <section>
+            <h2>Abstract</h2>
+            <p>Graph Neural Networks (GNNs) achieve strong predictive performance but offer limited transparency in
+                their decision-making. Self-Interpretable GNNs (SI-GNNs) address this by generating built-in
+                explanations, yet their training objectives are misaligned with evaluation criteria such as
+                faithfulness. This raises two key questions: (i) can faithfulness be explicitly optimized during
+                training, and (ii) does such optimization genuinely improve explanation quality? We show that
+                faithfulness is intrinsically tied to explanation self-consistency and can therefore be optimized
+                directly. Empirical analysis further reveals that self-inconsistency predominantly occurs on unimportant
+                features, linking it to redundancy-driven explanation inconsistency observed in recent work and
+                suggesting untapped potential for improving explanation quality. Building on these insights, we
+                introduce a simple, model-agnostic self-consistency (SC) training strategy. Without changing
+                architectures or pipelines, SC consistently improves explanation quality across multiple dimensions and
+                benchmarks, offering an effective and scalable pathway to more trustworthy GNN explanations.</p>
+        </section>
+
+        <section class="tldr">
+            <b>TL;DR:</b>
+            We study what happens when SI-GNNs are explicitly optimized for faithfulness,
+            and show how this leads to more stable and reliable explanations.
+        </section>
+
+        <section id="teaser">
+            <h2>What Does It Mean for an Explanation to Be Faithful?</h2>
+
+            <img src="./faithfulness.png" alt="sample figure" class="teaser-img">
+
+            <p>
+                Suppose a GNN tells us that only a small part of a graph is important for its prediction.
+                If we keep only that part, should the prediction remain the same?
+            </p>
+            <p>
+                This is the idea of <b>faithfulness</b>—a widely used criterion for evaluating explanations.
+            </p>
+            <p>
+                Let a SI-GNN be a function \( f(G) \), and let \( G_s \subseteq G \) denote the explanation.
+                A faithful explanation should preserve the model’s prediction when only the explanation is used:
+            </p>
+
+            <p style="text-align: center;">
+                \( f(G_s) = f(G) \)
+            </p>
+
+            <p>
+                However, while we evaluate explanations using this criterion,
+                we never train models to satisfy it.
+            </p>
+        </section>
+
+        <div class="question-box">
+            <b>This mismatch naturally raises two questions:</b>
+            <p class="question-item">(i) Can faithfulness be optimized during training?</p>
+            <p class="question-item">(ii) Even if feasible, does it truly improve explanation quality?</p>
+        </div>
+
+        <section>
+            <h2>Key Insight</h2>
+
+            <p>
+                <b>(i) Can faithfulness be optimized?</b>
+                Yes—by enforcing <b>self-consistency of explanations</b>.
+            </p>
+
+            <p>
+                Let \( h_{G_s}(G) \) denote the explainer that extracts a subgraph \( G_s \).
+                Instead of directly constraining predictions,
+                we require the explainer to be consistent when reusing its own output:
+            </p>
+
+            <p class="formula">
+                \[
+                h_{G_s}(G) = h_{G_s}(G_s)
+                \]
+            </p>
+            <p>
+                If the explanation truly captures what drives the prediction,
+                such self-consistency naturally leads to faithful behavior.
+            </p>
+            <p class="formula">
+                \[
+                \underbrace{f(G_s) = f(G)}_{\text{faithfulness}}
+                \quad \Longrightarrow \quad
+                \underbrace{h_{G_s}(G) = h_{G_s}(G_s)}_{\text{self-consistency}}
+                \]
+            </p>
+
+            <p>
+                <b>(ii) Does it improve explanation quality?</b>
+                Yes—but not in an obvious way.
+                Our empirical findings reveal that without self-consistency,
+                explanations can vary significantly across repeated passes of the same model.
+                Using benchmark datasets with ground-truth explanations, we further observe that self-inconsistency
+                primarily arises from instability on features labeled as unimportant, while important features remain
+                stable.
+            </p>
+
+            <figure>
+                <img src="./diff.png" alt="self-consistency analysis" class="diff-img">
+                <figcaption>
+                    Self-inconsistency measured as the L1 difference (DIFF) between two explanations.
+                    Results are shown for SMGNN (Azzolin et al., 2025) and GSAT (Miao et al., 2022)
+                    across four benchmark datasets: A = BA-2MOTIFS, B = MR, C = BENZENE, D = MUTAGENICITY.
+                    Within each panel, UNIMP and IMP denote unimportant and important features, respectively.
+                </figcaption>
+            </figure>
+
+            <p>
+                This behavior closely relates to <b>explanation redundancy</b> observed in recent work (Tai et al.,
+                2025),
+                where explainers allocate unnecessary importance to irrelevant features when budget allowed. That work
+                further showed that addressing redundancy improves explanation quality. Since our study shows that
+                self-inconsistency also concentrates on unimportant features, it suggests a potential connection:
+                addressing self-inconsistency may address redundancy as well, thereby improving explanation quality in a
+                similar manner.
+            </p>
+        </section>
+
+        <section>
+            <h2>Method: Self-Consistency Fine-Tuning</h2>
+            <figure>
+                <img src="./method.png" alt="SC training framework" class="method-img">
+                <figcaption>
+                    Overview of the self-consistency (SC) training framework.
+                    A SI-GNN is first trained with the standard objective.
+                    The encoder is then frozen, and the explainer and classifier are fine-tuned
+                    with an alignment loss that enforces the first-pass explanation \( G_s^{(1)} \)
+                    to match the second-pass explanation \( G_s^{(2)} \).
+                </figcaption>
+            </figure>
+            <p>
+                We adopt a simple two-stage training framework.
+                First, a SI-GNN is trained with the standard objective.
+                Then, we freeze the encoder and fine-tune the explainer and classifier.
+            </p>
+            <p>
+                During fine-tuning, given an input graph \( G \), the explainer produces an explanation \( G_s^{(1)} \).
+                We then feed \( G_s^{(1)} \) back into the model to obtain a second explanation \( G_s^{(2)} \).
+            </p>
+
+            <p>
+                We introduce an additional <b>self-consistency (SC) loss</b> to align the two:
+            </p>
+
+            <p class="formula">
+                \[
+                \mathcal{L}_{\mathrm{SC}} = | G_s^{(1)} - G_s^{(2)} |.
+                \]
+            </p>
+            <p>
+                This objective encourages the model to produce consistent explanations,
+                and can be seamlessly applied to existing SI-GNNs without modifying their architectures.
+            </p>
+        </section>
+
+        <section>
+            <h2>Results</h2>
+
+            <p>
+                We illustrate the effect of self-consistency fine-tuning through a qualitative case study.
+                The figure below shows explanations generated by five independently trained models.
+            </p>
+
+            <figure>
+                <img src="./case.png" alt="case study" class="method-img">
+                <figcaption>
+                    Explanations generated by five independently trained models (SMGNN vs. SMGNN+SC).
+                    SC fine-tuning leads to more consistent and plausible explanations.
+                </figcaption>
+            </figure>
+
+            <p>
+                Without SC, explanations vary significantly across runs and often highlight irrelevant structures.
+                In contrast, SC fine-tuning produces explanations that are both more stable (consistent across runs)
+                and more aligned with human-annotated explanation (plausible).
+            </p>
+
+            <p>
+                For more detailed analysis and quantitative results,
+                please refer to the <a href="https://iclr.cc/virtual/2026/poster/10008008" target="_blank">paper</a>.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">© Wenxin Tai</div>
+    </footer>
+
+    <script>
+        const contactBtn = document.getElementById('contactBtn');
+        const contactModal = document.getElementById('contactModal');
+        const contactClose = contactModal ? contactModal.querySelector('.contact-close') : null;
+
+        const openModal = () => {
+            if (!contactModal) return;
+            contactModal.classList.add('open');
+            contactModal.setAttribute('aria-hidden', 'false');
+        };
+
+        const closeModal = () => {
+            if (!contactModal) return;
+            contactModal.classList.remove('open');
+            contactModal.setAttribute('aria-hidden', 'true');
+        };
+
+        contactBtn?.addEventListener('click', openModal);
+        contactClose?.addEventListener('click', closeModal);
+        contactModal?.addEventListener('click', (e) => {
+            if (e.target === contactModal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+
+</body>
+
+</html>
